@@ -1,25 +1,44 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-@import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
-
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: bisque;
+}
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 100vh;
+}
+.search-form input {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 272px;
+  height: 40px;
+  padding: 8px 16px;
+}
+.search-form input:hover {
+  border: 1px solid #000;
+}
+.search-form input:focus {
+  outline: none;
+  border: 1px solid #4e75ff;
+}
+.button {
+  border: none;
+  background: #4e75ff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 91px;
+  height: 40px;
+  font-weight: 500;
   font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+.button:hover {
+  background: #6c8cff;
+  cursor: pointer;
 }
