@@ -1,3 +1,5 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 const form = document.querySelector('form');
 const input = document.querySelector('#date-pictures');
 const button = document.querySelector('button');
@@ -14,13 +16,7 @@ function handleSearch(event) {
     .catch(error => alert('Fetch error: ', error.message))
     .finally(() => form.reset());
 }
-// webformatURL,
-//   largeImageURL,
-//   tags,
-//   likes,
-//   views,
-//   comments,
-//   downloads,
+
 function getPicturesByQuery(query) {
   const API_KEY = '44790874-b72b714502b79af1442269c5d';
   return fetch(`https://pixabay.com/api/?key=${API_KEY}&q=${query}`).then(
@@ -39,11 +35,11 @@ function createItem(items) {
   items.forEach(item => {
     const galleryItem = document.createElement('li');
     galleryItem.classList.add('gallery-item');
-    galleryItem.innerHTML = `<a href="" class="gallery-link">
+    galleryItem.innerHTML = `<a href="${item.largeImageURL}" class="gallery-link">
     <img src="${item.webformatURL}" alt="${item.tags}" class="gallery-image" />
   </a> 
   <div class="item-info>
-  <div class="">
+<div class="">
   <p class="likes name">Likes</p>
   <p class="likes value">${item.likes}</p>
 </div>
@@ -59,8 +55,19 @@ function createItem(items) {
   <p class="downl name">Downloads</p>
   <p class="downl value">${item.downloads}</p>
 </div>
-</div>
+  </div>
 `;
     gallery.appendChild(galleryItem);
   });
+  let lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  let lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
+});

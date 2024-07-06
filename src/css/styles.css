@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+@import url(../../node_modules/simplelightbox/dist/simple-lightbox.min.css);
 body {
   background-color: bisque;
 }
@@ -45,4 +46,7 @@ ul {
 .button:hover {
   background: #6c8cff;
   cursor: pointer;
+}
+.item-info {
+  display: flex;
 }
