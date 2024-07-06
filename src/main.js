@@ -1,11 +1,26 @@
 const form = document.querySelector('form');
 const input = document.querySelector('#date-pictures');
 const button = document.querySelector('button');
+const gallery = document.querySelector('.gallery');
 form.addEventListener('submit', handleSearch);
 function handleSearch(event) {
   event.preventDefault();
-  return event.target.elements.inputtext.value;
+  const queryResult = event.target.elements.inputtext.value;
+  getPicturesByQuery(queryResult.toLowerCase().trim())
+    .then(data => {
+      console.log(data);
+      createItem(data.hits);
+    })
+    .catch(error => alert('Fetch error: ', error.message))
+    .finally(() => form.reset());
 }
+// webformatURL,
+//   largeImageURL,
+//   tags,
+//   likes,
+//   views,
+//   comments,
+//   downloads,
 function getPicturesByQuery(query) {
   const API_KEY = '44790874-b72b714502b79af1442269c5d';
   return fetch(`https://pixabay.com/api/?key=${API_KEY}&q=${query}`).then(
@@ -18,6 +33,34 @@ function getPicturesByQuery(query) {
     }
   );
 }
-getPicturesByQuery('blue+car')
-  .then(data => console.log(data))
-  .catch(error => console.error('Fetch error: ', error));
+
+function createItem(items) {
+  gallery.innerHTML = '';
+  items.forEach(item => {
+    const galleryItem = document.createElement('li');
+    galleryItem.classList.add('gallery-item');
+    galleryItem.innerHTML = `<a href="" class="gallery-link">
+    <img src="${item.webformatURL}" alt="${item.tags}" class="gallery-image" />
+  </a> 
+  <div class="item-info>
+  <div class="">
+  <p class="likes name">Likes</p>
+  <p class="likes value">${item.likes}</p>
+</div>
+<div class="">
+  <p class="views name">Views</p>
+  <p class="views value">${item.views}</p>
+</div>
+<div class="">
+  <p class="com name">Comments</p>
+  <p class="com value">${item.comments}</p>
+</div>
+<div class="">
+  <p class="downl name">Downloads</p>
+  <p class="downl value">${item.downloads}</p>
+</div>
+</div>
+`;
+    gallery.appendChild(galleryItem);
+  });
+}

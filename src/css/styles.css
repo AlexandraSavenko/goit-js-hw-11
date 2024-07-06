@@ -4,12 +4,16 @@
 body {
   background-color: bisque;
 }
+ul {
+  list-style: none;
+}
 .search-form {
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 50px;
   gap: 8px;
-  height: 100vh;
+  height: 100%;
+  margin-bottom: 32px;
 }
 .search-form input {
   border: 1px solid #808080;
