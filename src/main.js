@@ -8,7 +8,6 @@ import { fetchParams } from './js/pixabay-api';
 
 const formSearch = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery-container');
-const loading = document.querySelector('.loading');
 
 formSearch.addEventListener('submit', getPictureByValue);
 
