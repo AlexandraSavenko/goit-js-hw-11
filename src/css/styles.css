@@ -26,15 +26,17 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
 }
 
 .form-input {
+  box-sizing: border-box;
+  border: 1px solid #808080;
   border-radius: 4px;
   width: 272px;
   height: 40px;
-  background-color: #fff;
-  margin-right: 8px;
-  padding-left: 16px;
+  padding: 8px 16px;
 }
 .form-input:hover {
   border-color: black;
@@ -48,14 +50,17 @@ input:focus {
   color: #808080;
 }
 .btn-submit {
-  border-color: inherit;
+  border: none;
+  background: #4e75ff;
   border-radius: 8px;
   padding: 8px 16px;
-  width: 100px;
-  height: 44px;
-  background: #4e75ff;
+  width: 91px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
   color: #fff;
-  margin-bottom: 24px;
 }
 
 .btn-submit:hover {
