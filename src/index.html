@@ -9,10 +9,21 @@
   </head>
   <body>
     <form class="search-form">
-      <input type="text" id="date-pictures" name="inputtext" />
-      <button type="submit" class="button">Search</button>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-input"
+          name="insert"
+          placeholder="Search images..."
+        />
+      </div>
+
+      <button type="submit" class="btn-submit">Search</button>
     </form>
-    <ul class="gallery"></ul>
+    <div class="loading">
+      <div class="loader">Your picture is almost ready...</div>
+    </div>
+    <div class="gallery-container"></div>
     <script src="./main.js" type="module"></script>
   </body>
 </html>
